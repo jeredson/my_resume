@@ -16,9 +16,9 @@ const Hero = () => {
             <div className="space-y-8">
               <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold text-text-hero leading-normal px-1 py-2">
-                  Jeredson
+                  JEREDSON
                   <span className="block bg-gradient-primary bg-clip-text text-transparent font-extrabold tracking-wider whitespace-nowrap">
-                    Daniel Raj
+                    DANIEL RAJ
                   </span>
                 </h1>
                 <p className="text-xl lg:text-2xl text-text-body font-medium mt-2">
