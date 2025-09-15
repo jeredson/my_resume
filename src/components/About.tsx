@@ -6,13 +6,16 @@ const About = () => {
   const skills = [
     "Manual Testing & Test Case Design",
     "Quality Control & Product Inspection",
-    "Defect Reporting & Bug Tracking"
+    "Defect Reporting & Bug Tracking",
+    "Front-End Development & Responsive Design",
+    "Database Management & Query Optimization",
+    "Web Deployment & Hosting"
   ];
 
   const techSkills = {
     "Languages": ["Python", "SQL", "Java", "JavaScript"],
     "Frameworks": ["Selenium", "Streamlit"],
-    "Tools": ["Netlify", "Google App Scripts", "JIRA"],
+    "Tools": ["Netlify", "Vercel", "Google App Scripts", "JIRA"],
     "Platforms": ["VS Code", "Anaconda", "Windows", "Eclipse"]
   };
 

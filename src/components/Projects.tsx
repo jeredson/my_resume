@@ -11,7 +11,8 @@ const Projects = () => {
       description: "Developed a user-friendly platform for deploying ML models with minimal coding. Integrated Python libraries such as Sci-kit learn and Streamlit for backend logic and visualization. Enabled rapid prototyping for classification and regression problems.",
       technologies: ["Python", "Sci-Kit Learn", "Tkinter", "Streamlit"],
       icon: Brain,
-      category: "Machine Learning"
+      category: "Machine Learning",
+      codeLink: "https://github.com/jeredson/AI_Flow/tree/main"
     },
     {
       title: "Spotify Music Recommender Based on Human Emotion",
@@ -19,7 +20,8 @@ const Projects = () => {
       description: "Designed an emotion-based recommendation engine using sentiment analysis of lyrics and user mood detection. Utilized Python, Pandas, and NLP techniques for feature extraction and classification. Improved recommendation accuracy by mapping user inputs to mood-specific playlists.",
       technologies: ["Python", "Pandas", "NLP", "Sentiment Analysis"],
       icon: Music,
-      category: "Data Science"
+      category: "Data Science",
+      codeLink: "https://github.com/jeredson/Spoti-Finder"
     },
     {
       title: "Parent Feedback Collection System",
@@ -28,8 +30,7 @@ const Projects = () => {
       technologies: ["HTML", "Google Apps Script", "Google Sheets", "JavaScript"],
       icon: Users,
       category: "Web Development",
-      codeLink: "https://github.com/jeredson/parents_feeback",
-      demoLink: "https://parentsfeedback.netlify.app/"
+      codeLink: "https://github.com/jeredson/parents_feeback"
     }
   ];
 
@@ -102,33 +103,19 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {project.codeLink || project.demoLink ? (
+                  {project.codeLink ? (
                     <div className="flex gap-3 pt-2">
-                      {project.codeLink && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                        >
-                          <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                            <Github className="w-4 h-4 mr-2" />
-                            Code
-                          </a>
-                        </Button>
-                      )}
-                      {project.demoLink && (
-                        <Button
-                          size="sm"
-                          asChild
-                          className="flex-1 bg-gradient-primary text-primary-foreground hover:shadow-medium transition-all duration-300"
-                        >
-                          <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-4 h-4 mr-2" />
-                            Demo
-                          </a>
-                        </Button>
-                      )}
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                      >
+                        <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4 mr-2" />
+                          Code
+                        </a>
+                      </Button>
                     </div>
                   ) : null}
                 </div>
