@@ -70,6 +70,10 @@ const About = () => {
                     <h4 className="font-semibold text-foreground">Higher Secondary (H.S.C.)</h4>
                     <p className="text-text-light">Daniel Thomas Matric Hr Sec School • June 2021 • 76%</p>
                   </div>
+                  <div>
+                    <h4 className="font-semibold text-foreground">High School (S.S.L.C.)</h4>
+                    <p className="text-text-light">Daniel Thomas Matric. Hr. Sec. School • June 2019 • 78%</p>
+                  </div>
                 </div>
               </Card>
             </div>
