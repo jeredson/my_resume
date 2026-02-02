@@ -230,7 +230,7 @@ const Projects = () => {
 
           {/* Call to Action */}
           <div className="text-center">
-            <Card className="glass-card p-12 inline-block max-w-2xl">
+            <div className="max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center">
                   <Code className="w-6 h-6 text-white" />
@@ -246,7 +246,7 @@ const Projects = () => {
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 <span>In Development</span>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
