@@ -6,6 +6,26 @@ import { ExternalLink, Github, Brain, Music, Users, Code } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
+      title: "Ministry Management System",
+      type: "Professional Project",
+      description: "Developed a comprehensive Web application for the ministry to manage employee databases, payroll processing, and administrative operations. Implemented secure data handling, user authentication, and reporting features, enhancing operational efficiency and record-keeping accuracy.",
+      technologies: ["JavaScript", "SQL", "React.js"],
+      icon: Users,
+      category: "Web Development",
+      period: "November '25",
+      client: "Bethel Missionary Movement"
+    },
+    {
+      title: "ERP Application Development and Testing",
+      type: "Professional Project", 
+      description: "Developed a centralized ERP for staff to automate daily work reporting, enhancing operational oversight and enabling data-driven decision-making for institutional management.",
+      technologies: ["React.js", "JavaScript", "SQL"],
+      icon: Code,
+      category: "Web Development",
+      period: "June '25 - Oct '25",
+      client: "Daniel Thomas Institutions"
+    },
+    {
       title: "AI Assisted Low Code Platform for Machine Learning Development",
       type: "Final Year Project",
       description: "Developed a user-friendly platform for deploying ML models with minimal coding. Integrated Python libraries such as Sci-kit learn and Streamlit for backend logic and visualization. Enabled rapid prototyping for classification and regression problems.",
@@ -76,6 +96,11 @@ const Projects = () => {
                   <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300 mb-2 leading-tight">
                     {project.title}
                   </h3>
+                  {project.client && (
+                    <p className="text-sm text-text-light mb-2">
+                      {project.client} • {project.period}
+                    </p>
+                  )}
                   <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground">
                     {project.category}
                   </Badge>
