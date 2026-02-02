@@ -1,9 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Brain, Music, Users, Code } from "lucide-react";
+import { ExternalLink, Github, Brain, Music, Users, Code, ArrowUpRight, Calendar, Building } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const Projects = () => {
+  const [visibleCards, setVisibleCards] = useState<number[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+
   const projects = [
     {
       title: "Ministry Management System",
@@ -13,7 +17,9 @@ const Projects = () => {
       icon: Users,
       category: "Web Development",
       period: "November '25",
-      client: "Bethel Missionary Movement"
+      client: "Bethel Missionary Movement",
+      gradient: "from-blue-500/20 to-purple-500/20",
+      featured: true
     },
     {
       title: "ERP Application Development and Testing",
@@ -23,7 +29,9 @@ const Projects = () => {
       icon: Code,
       category: "Web Development",
       period: "June '25 - Oct '25",
-      client: "Daniel Thomas Institutions"
+      client: "Daniel Thomas Institutions",
+      gradient: "from-green-500/20 to-blue-500/20",
+      featured: true
     },
     {
       title: "AI Assisted Low Code Platform for Machine Learning Development",
@@ -32,7 +40,8 @@ const Projects = () => {
       technologies: ["Python", "Sci-Kit Learn", "Tkinter", "Streamlit"],
       icon: Brain,
       category: "Machine Learning",
-      codeLink: "https://github.com/jeredson/AI_Flow/tree/main"
+      codeLink: "https://github.com/jeredson/AI_Flow/tree/main",
+      gradient: "from-purple-500/20 to-pink-500/20"
     },
     {
       title: "Spotify Music Recommender Based on Human Emotion",
@@ -41,7 +50,8 @@ const Projects = () => {
       technologies: ["Python", "Pandas", "NLP", "Sentiment Analysis"],
       icon: Music,
       category: "Data Science",
-      codeLink: "https://github.com/jeredson/Spoti-Finder"
+      codeLink: "https://github.com/jeredson/Spoti-Finder",
+      gradient: "from-green-500/20 to-teal-500/20"
     },
     {
       title: "Parent Feedback Collection System",
@@ -50,77 +60,146 @@ const Projects = () => {
       technologies: ["HTML", "Google Apps Script", "Google Sheets", "JavaScript"],
       icon: Users,
       category: "Web Development",
-      codeLink: "https://github.com/jeredson/parents_feeback"
+      codeLink: "https://github.com/jeredson/parents_feeback",
+      gradient: "from-orange-500/20 to-red-500/20"
     }
   ];
 
-  const getIconColor = (category: string) => {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleCards(prev => [...prev, index]);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const cards = sectionRef.current?.querySelectorAll('[data-index]');
+    cards?.forEach(card => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const getCategoryColor = (category: string) => {
     switch (category) {
       case "Machine Learning":
-        return "text-purple-500";
+        return "bg-purple-500/10 text-purple-600 border-purple-500/20";
       case "Data Science":
-        return "text-green-500";
+        return "bg-green-500/10 text-green-600 border-green-500/20";
       case "Web Development":
-        return "text-blue-500";
+        return "bg-blue-500/10 text-blue-600 border-blue-500/20";
       default:
-        return "text-primary";
+        return "bg-primary/10 text-primary border-primary/20";
     }
   };
 
   return (
-    <section id="projects" className="py-20 bg-secondary/30">
+    <section ref={sectionRef} id="projects" className="py-24 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-gradient-primary rounded-full blur-3xl opacity-10" />
+      
       <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-text-hero mb-4">
-              Featured Projects
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-20 section-reveal">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20 mb-6">
+              <Code className="w-4 h-4 mr-2" />
+              Featured Work
+            </div>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+              <span className="text-foreground">Selected </span>
+              <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-xl text-text-body max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               A showcase of my technical projects spanning machine learning, data science, 
-              and web development, demonstrating practical application of skills.
+              and web development, demonstrating practical application of skills and innovation.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Projects Grid */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-16">
             {projects.map((project, index) => (
-              <Card key={index} className="p-6 bg-gradient-card border-0 shadow-soft hover:shadow-strong transition-all duration-300 group h-full flex flex-col">
-                <div className="mb-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center ${getIconColor(project.category)}`}>
-                      <project.icon className="w-6 h-6 text-primary-foreground" />
+              <Card 
+                key={index} 
+                data-index={index}
+                className={`group premium-card p-8 h-full flex flex-col relative overflow-hidden transition-all duration-700 ${
+                  visibleCards.includes(index) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } ${project.featured ? 'lg:col-span-1' : ''}`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <project.icon className="w-7 h-7 text-white" />
+                      </div>
+                      <div>
+                        <Badge variant="outline" className="border-primary/30 text-primary mb-2">
+                          {project.type}
+                        </Badge>
+                        {project.featured && (
+                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                            Featured
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <Badge variant="outline" className="border-primary text-primary">
-                      {project.type}
+                  </div>
+
+                  {/* Title and Meta */}
+                  <div className="mb-6">
+                    <h3 className="text-2xl font-bold text-foreground group-hover:text-gradient transition-all duration-300 mb-3 leading-tight">
+                      {project.title}
+                    </h3>
+                    
+                    {project.client && (
+                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                        <div className="flex items-center gap-2">
+                          <Building className="w-4 h-4" />
+                          <span>{project.client}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          <span>{project.period}</span>
+                        </div>
+                      </div>
+                    )}
+                    
+                    <Badge className={`${getCategoryColor(project.category)} border`}>
+                      {project.category}
                     </Badge>
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300 mb-2 leading-tight">
-                    {project.title}
-                  </h3>
-                  {project.client && (
-                    <p className="text-sm text-text-light mb-2">
-                      {project.client} • {project.period}
+
+                  {/* Description */}
+                  <div className="flex-1 mb-8">
+                    <p className="text-muted-foreground leading-relaxed">
+                      {project.description}
                     </p>
-                  )}
-                  <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground">
-                    {project.category}
-                  </Badge>
-                </div>
+                  </div>
 
-                <div className="flex-1">
-                  <p className="text-text-body mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium text-foreground mb-3">Technologies Used</h4>
+                  {/* Technologies */}
+                  <div className="mb-8">
+                    <h4 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+                      <Code className="w-4 h-4" />
+                      Technologies
+                    </h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => (
                         <Badge
                           key={techIndex}
                           variant="secondary"
-                          className="text-xs bg-secondary/60 text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
+                          className="bg-secondary/60 hover:bg-primary hover:text-primary-foreground transition-all duration-300 cursor-default"
                         >
                           {tech}
                         </Badge>
@@ -128,37 +207,45 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {project.codeLink ? (
-                    <div className="flex gap-3 pt-2">
+                  {/* Actions */}
+                  {project.codeLink && (
+                    <div className="flex gap-3">
                       <Button
                         variant="outline"
-                        size="sm"
                         asChild
-                        className="flex-1 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                        className="flex-1 group/btn border-primary/30 hover:border-primary hover:bg-primary/5 transition-all duration-300"
                       >
                         <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                          <Github className="w-4 h-4 mr-2" />
-                          Code
+                          <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-300" />
+                          View Code
+                          <ArrowUpRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
                         </a>
                       </Button>
                     </div>
-                  ) : null}
+                  )}
                 </div>
               </Card>
             ))}
           </div>
 
-          {/* Additional Project Info */}
-          <div className="mt-16 text-center">
-            <Card className="p-8 bg-gradient-card border-0 shadow-soft inline-block">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Code className="w-6 h-6 text-primary" />
-                <h3 className="text-xl font-semibold text-text-hero">More Projects Coming Soon</h3>
+          {/* Call to Action */}
+          <div className="text-center">
+            <Card className="glass-card p-12 inline-block max-w-2xl">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-primary flex items-center justify-center">
+                  <Code className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gradient">More Projects Coming Soon</h3>
               </div>
-              <p className="text-text-body max-w-md">
+              <p className="text-muted-foreground leading-relaxed mb-8">
                 Currently working on additional projects in automation testing, 
-                machine learning applications, and full-stack web development.
+                machine learning applications, and full-stack web development. 
+                Stay tuned for more innovative solutions!
               </p>
+              <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                <span>In Development</span>
+              </div>
             </Card>
           </div>
         </div>
