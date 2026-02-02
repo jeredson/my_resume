@@ -131,24 +131,9 @@ const Hero = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 </div>
-                
-                {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 glass-card rounded-2xl p-4 animate-bounce" style={{ animationDuration: '3s' }}>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-gradient">2+</div>
-                    <div className="text-xs text-muted-foreground font-medium">Years Experience</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-primary/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>
