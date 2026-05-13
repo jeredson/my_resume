@@ -21,7 +21,7 @@ const Experience = () => {
     {
       title: "Full Stack Web Developer",
       company: "Agnes Mobiles",
-      period: "September 2024",
+      period: "February 2026",
       type: "Internship",
       description: "Built a responsive e-commerce web application for online mobile and tablet ordering with product, user, and order management features."
     }
