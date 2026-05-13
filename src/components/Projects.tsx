@@ -16,9 +16,8 @@ const Projects = () => {
       technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap"],
       icon: Code,
       category: "Web Development",
-      period: "September 2024",
+      period: "February 2026",
       client: "Agnes Mobiles",
-      codeLink: "https://github.com/jeredson/my_resume",
       gradient: "from-cyan-500/20 to-blue-500/20",
       featured: true
     },
