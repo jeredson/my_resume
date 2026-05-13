@@ -120,6 +120,11 @@ const About = () => {
                     <h4 className="font-semibold text-foreground">Higher Secondary (H.S.C.)</h4>
                     <p className="text-muted-foreground text-sm">Daniel Thomas Matric Hr Sec School • June 2021 • 76%</p>
                   </div>
+                  <div className="relative pl-6 border-l-2 border-muted">
+                    <div className="absolute -left-2 top-0 w-4 h-4 bg-muted rounded-full" />
+                    <h4 className="font-semibold text-foreground">Secondary School (SSLC)</h4>
+                    <p className="text-muted-foreground text-sm">Daniel Thomas Hr Sec School • June 2019 • 78%</p>
+                  </div>
                 </div>
               </Card>
             </div>

@@ -5,29 +5,34 @@ import { Building, Calendar, Award } from "lucide-react";
 const Experience = () => {
   const experiences = [
     {
-      title: "ERP Testing and Webpage Development Intern",
-      company: "Daniel Thomas Institutions",
+      title: "ERP Testing and Web Development",
+      company: "Daniel Thomas Group of Schools",
       period: "June 2025",
       type: "Internship",
-      description: "Specialized in ERP system testing and web development projects"
+      description: "Specialized in School ERP testing, manual testing, database validation, and staff task management application workflows."
     },
     {
-      title: "Data Science Intern",
-      company: "Kaashiv Infotech",
-      period: "October 2024",
+      title: "Full Stack Web Developer",
+      company: "Bethel Missionary Movement",
+      period: "January 2025",
       type: "Internship",
-      description: "Focused on data science projects and analytical solutions"
+      description: "Developed and maintained a ministry ERP system with payroll, donation tracking, church management, and employee administration modules."
     },
     {
-      title: "Data Science Intern",
-      company: "Retech Solutions",
-      period: "May 2023",
+      title: "Full Stack Web Developer",
+      company: "Agnes Mobiles",
+      period: "September 2024",
       type: "Internship",
-      description: "Worked on data analytics and machine learning projects"
+      description: "Built a responsive e-commerce web application for online mobile and tablet ordering with product, user, and order management features."
     }
   ];
 
   const certifications = [
+    {
+      title: "Core Java, SQL, Manual Testing, SDLC & STLC",
+      issuer: "QSpyders",
+      icon: Award
+    },
     {
       title: "Data Analytics Certification",
       issuer: "Retech Solutions",

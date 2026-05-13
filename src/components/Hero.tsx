@@ -84,7 +84,7 @@ const Hero = () => {
                   className="premium-button group px-8 py-6 text-base font-semibold"
                 >
                   <a 
-                    href="https://drive.google.com/file/d/1O8Dh80n6mbKCRTbKBHp8qT0KuyGfdAry/view?usp=sharing" 
+                    href="https://drive.google.com/file/d/1bzMHnSXOjtElG118ILaNJOk2O-LOGp-4/view?usp=sharing"
                     target="_blank" 
                     rel="noopener noreferrer"
                   >

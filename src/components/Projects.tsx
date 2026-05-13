@@ -10,6 +10,19 @@ const Projects = () => {
 
   const projects = [
     {
+      title: "Agnes Mobiles E-Commerce Website",
+      type: "Full Stack Web Development Project",
+      description: "Developed a responsive e-commerce web application for Agnes Mobiles to enable users to browse and order mobiles and tablets online. Implemented frontend and backend functionalities including product management, user authentication, order processing, and inventory handling to ensure smooth customer experience and efficient business operations.",
+      technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL", "Bootstrap"],
+      icon: Code,
+      category: "Web Development",
+      period: "September 2024",
+      client: "Agnes Mobiles",
+      codeLink: "https://github.com/jeredson/my_resume",
+      gradient: "from-cyan-500/20 to-blue-500/20",
+      featured: true
+    },
+    {
       title: "Ministry Management System",
       type: "Professional Project",
       description: "Developed a comprehensive Web application for the ministry to manage employee databases, payroll processing, and administrative operations. Implemented secure data handling, user authentication, and reporting features, enhancing operational efficiency and record-keeping accuracy.",
